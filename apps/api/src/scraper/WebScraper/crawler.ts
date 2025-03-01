@@ -428,6 +428,7 @@ export class WebCrawler {
       "https?://(?:[a-z0-9.]*\\.)?googletagmanager.com",
       "https?://(?:[a-z0-9.]*\\.)?instagram.com",
       "https?://(?:[a-z0-9.]*\\.)?wikipedia.com",
+      "https?://(?:[a-z0-9.]*\\.)?wikipedia.org",
       "https?://(?:[a-z0-9.]*\\.)?reddit.com",
       "https?://(?:[a-z0-9.]*\\.)?snapchat.com",
       "https?://(?:[a-z0-9.]*\\.)?twitch.com",
@@ -474,6 +475,8 @@ export class WebCrawler {
       "https?://(?:[a-z0-9.]*\\.)?nature.com",
       "https?://(?:[a-z0-9.]*\\.)?sciencemag.org",
       "https?://(?:[a-z0-9.]*\\.)?scientificamerican.com",
+      "https?://(?:[a-z0-9.]*\\.)?nationalgeographic.com",
+      "https?://(?:[a-z0-9.]*\\.)?newscientist.com",
       "mailto:",
       "tel:",
     ];
