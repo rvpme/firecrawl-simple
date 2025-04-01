@@ -79,7 +79,15 @@ export class WebCrawler {
     const sitemapLinks = await this.tryFetchSitemapLinks(this.initialUrl);
     if (sitemapLinks.length > 0) {
       let filteredLinks = sitemapLinks
-        .filter((link) => !this.visited.has(link) && this.filterURL(link))
+        .filter((link) => {
+          let u = link;
+          if (link.startsWith("/")) {
+            u = new URL(link, this.initialUrl).href;
+          } else if (!link.startsWith("#") && !link.startsWith("mailto:")) {
+            u = new URL(link, this.initialUrl).href;
+          }
+          return !this.visited.has(u) && this.filterURL(u);
+        })
         .slice(0, this.limit);
       return filteredLinks.map((link) => ({ url: link, html: "" }));
     }
@@ -119,9 +127,19 @@ export class WebCrawler {
     );
 
     const filteredUrls = urls
-      .filter(
-        (urlObj) => !this.visited.has(urlObj.url) && this.filterURL(urlObj.url)
-      )
+      .filter((urlObj) => {
+        let u = urlObj.url;
+        if (urlObj.url.startsWith("/")) {
+          u = new URL(urlObj.url, this.initialUrl).href;
+        } else if (
+          !urlObj.url.startsWith("#") &&
+          !urlObj.url.startsWith("mailto:")
+        ) {
+          u = new URL(urlObj.url, this.initialUrl).href;
+        }
+
+        return !this.visited.has(u) && this.filterURL(u);
+      })
       .slice(0, limit);
 
     return filteredUrls.map((filteredUrl) => ({
@@ -222,17 +240,17 @@ export class WebCrawler {
       return fullUrl;
     }
 
-    // Logger.debug(
-    //   `Link filtered out: ${fullUrl} with tests: isInternalLink: ${this.isInternalLink(
-    //     fullUrl
-    //   )}, allowExternalLinks: ${
-    //     this.allowExternalLinks
-    //   }, isSocialMediaOrEmail: ${this.isSocialMediaOrEmail(
-    //     fullUrl
-    //   )}, matchesExcludes: ${this.matchesExcludes(
-    //     fullUrl
-    //   )}, matchesIncludes: ${this.matchesIncludes(fullUrl)}`
-    // );
+    Logger.trace(
+      `Link filtered out: ${fullUrl} with tests: isInternalLink: ${this.isInternalLink(
+        fullUrl
+      )}, allowExternalLinks: ${
+        this.allowExternalLinks
+      }, isSocialMediaOrEmail: ${this.isSocialMediaOrEmail(
+        fullUrl
+      )}, matchesExcludes: ${this.matchesExcludes(
+        fullUrl
+      )}, matchesIncludes: ${this.matchesIncludes(fullUrl)}`
+    );
     return null;
   }
 
