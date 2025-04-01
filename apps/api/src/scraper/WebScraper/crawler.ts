@@ -240,7 +240,7 @@ export class WebCrawler {
       return fullUrl;
     }
 
-    Logger.trace(
+    Logger.info(
       `Link filtered out: ${fullUrl} with tests: isInternalLink: ${this.isInternalLink(
         fullUrl
       )}, allowExternalLinks: ${
@@ -461,6 +461,16 @@ export class WebCrawler {
       "https?://(?:[a-z0-9.]*\\.)?google.com",
       "https?://(?:[a-z0-9.]*\\.)?forbes.com",
       "https?://(?:[a-z0-9.]*\\.)?nytimes.com",
+      "https?://(?:[a-z0-9.]*\\.)?theguardian.com",
+      "https?://(?:[a-z0-9.]*\\.)?theatlantic.com",
+      "https?://(?:[a-z0-9.]*\\.)?vox.com",
+      "https?://(?:[a-z0-9.]*\\.)?buzzfeednews.com",
+      "https?://(?:[a-z0-9.]*\\.)?vice.com",
+      "https?://(?:[a-z0-9.]*\\.)?businessinsider.com",
+      "https?://(?:[a-z0-9.]*\\.)?inc.com",
+      "https?://(?:[a-z0-9.]*\\.)?washingtonpost.com",
+      "https?://(?:[a-z0-9.]*\\.)?newsweek.com",
+      "https?://(?:[a-z0-9.]*\\.)?aljazeera.com",
       "https?://(?:[a-z0-9.]*\\.)?cnn.com",
       "https?://(?:[a-z0-9.]*\\.)?bbc.com",
       "https?://(?:[a-z0-9.]*\\.)?foxnews.com",
