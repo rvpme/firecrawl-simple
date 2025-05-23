@@ -31,7 +31,7 @@ The [upstream firecrawl repo](https://github.com/mendableai/firecrawl) contains 
 
 > This repository is in development, and we're still integrating custom modules into the mono repo. It's not fully ready for self-hosted deployment yet, but you can run it locally.
 
-Firecrawl's API surface and general functionality were ideal for our [Trieve sitesearch product](https://trieve.ai/sitesearch), but we needed a version ready for self-hosting that was easy to contribute to and scale on Kubernetes. Therefore, we decided to fork and begin maintaining a stripped down, stable version.
+Firecrawl's API surface and general functionality were ideal for our [Trieve sitesearch product](https://trieve.ai/products/sitesearch), but we needed a version ready for self-hosting that was easy to contribute to and scale on Kubernetes. Therefore, we decided to fork and begin maintaining a stripped down, stable version.
 
 Fire-engine, Firecrawl's solution for anti-bot pages, being closed source is the biggest deal breaker requiring us to maintain this. Further, our purposes not requiring the SaaS and AI dependencies also pushes our use-case far enough away from Firecrawl's current mission that it doesn't seem like merging into the upstream is viable at this time.
 
